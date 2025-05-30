@@ -1,0 +1,50 @@
+
+from crewai.tools import BaseTool
+from typing import Dict
+
+class MarketDataTool(BaseTool):
+    name: str = "market_data_fetcher"
+    description: str = "Fetches real-time market data from multiple sources"
+    
+    def _run(self, symbol: str, timeframe: str, source: str = "twelve_data") -> Dict:
+        """Fetch OHLCV data for analysis"""
+        # Implementation would connect to Twelve Data, TradingView, or Yahoo Finance
+        # Returns structured OHLCV data
+        pass
+    #DONE!
+
+class TechnicalAnalysisTool(BaseTool):
+    name: str = "technical_analyzer"
+    description: str = "Performs technical analysis calculations"
+    
+    def _run(self, data: Dict, analysis_type: str) -> Dict:
+        """Perform various technical analysis calculations"""
+        # Implementation for swing highs/lows, support/resistance, etc.
+        pass
+
+class PatternRecognitionTool(BaseTool):
+    name: str = "pattern_recognizer"
+    description: str = "Identifies Wyckoff and SMC patterns"
+    
+    def _run(self, data: Dict, pattern_type: str) -> Dict:
+        """Identify specific trading patterns"""
+        # Implementation for Wyckoff phases, order blocks, FVGs, etc.
+        pass
+
+class BacktestingTool(BaseTool):
+    name: str = "backtester"
+    description: str = "Validates strategies on historical data"
+    
+    def _run(self, parameters: Dict, historical_data: Dict) -> Dict:
+        """Backtest strategy parameters"""
+        # Implementation for historical validation
+        pass
+
+class PerformanceAnalyticsTool(BaseTool):
+    name: str = "performance_analyzer"
+    description: str = "Analyzes trade performance with LLM reasoning"
+    
+    def _run(self, trade_data: Dict, market_context: Dict) -> Dict:
+        """Deep analysis of trade outcomes vs expectations"""
+        # Implementation for LLM-powered trade analysis
+        pass
