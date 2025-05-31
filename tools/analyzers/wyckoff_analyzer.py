@@ -6,7 +6,7 @@ import numpy as np
 class WyckoffAnalyzer:
     """Wyckoff Method pattern recognition"""
     
-    #@staticmethod
+    @staticmethod
     def detect_accumulation_phase(ohlc_data: List[OHLCData]) -> Optional[WyckoffPattern]:
         """Detect Wyckoff accumulation phase"""
         if len(ohlc_data) < 50:
