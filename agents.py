@@ -6,7 +6,7 @@ from langchain_openai import ChatOpenAI
 
 from dotenv import load_dotenv
 
-from tools.back_testing_tool import BacktestingTool
+from tools.back_testing.back_testing_tool import BacktestingTool
 from tools.market_data_tool import MarketDataTool
 from tools.pattern_recognition.pattern_recognition_tool import PatternRecognitionTool
 from tools.performance_calculator.performance_analytics_tool import PerformanceAnalyticsTool

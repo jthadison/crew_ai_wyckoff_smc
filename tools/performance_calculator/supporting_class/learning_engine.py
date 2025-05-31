@@ -2,20 +2,23 @@ from typing import List, Dict, Any
 from datetime import datetime
 import statistics
 
-# Define PatternPerformance as a placeholder or import it from the correct module
-class PatternPerformance:
-    def __init__(self, pattern_name: str, reliability_score: float):
-        self.pattern_name = pattern_name
-        self.reliability_score = reliability_score
+from data_structures.pattern_performance import PatternPerformance
+from data_structures.trade_results import TradeResult
 
-# Define TradeResult as a placeholder or import it from the correct module
-class TradeResult:
-    def __init__(self, confluence_score: float, pnl: float, wyckoff_signals=None, smc_signals=None, patterns_detected=None):
-        self.confluence_score = confluence_score
-        self.pnl = pnl
-        self.wyckoff_signals = wyckoff_signals
-        self.smc_signals = smc_signals
-        self.patterns_detected = patterns_detected
+# # Define PatternPerformance as a placeholder or import it from the correct module
+# class PatternPerformance:
+#     def __init__(self, pattern_name: str, reliability_score: float):
+#         self.pattern_name = pattern_name
+#         self.reliability_score = reliability_score
+
+# # Define TradeResult as a placeholder or import it from the correct module
+# class TradeResult:
+#     def __init__(self, confluence_score: float, pnl: float, wyckoff_signals=None, smc_signals=None, patterns_detected=None):
+#         self.confluence_score = confluence_score
+#         self.pnl = pnl
+#         self.wyckoff_signals = wyckoff_signals
+#         self.smc_signals = smc_signals
+#         self.patterns_detected = patterns_detected
 
 class LearningEngine:
     """Machine learning component for system optimization"""
@@ -106,7 +109,7 @@ class LearningEngine:
         success_rate = self._calculate_success_rate(pattern_trades)
         return success_rate
     
-    def update_pattern_reliability(self, pattern_performances: List[PatternPerformance]):
+    def update_pattern_reliability(self, pattern_performances: List[PatternPerformance]) -> None:
         """Update pattern reliability scores based on performance"""
         for pattern_perf in pattern_performances:
             self.pattern_reliability_scores[pattern_perf.pattern_name] = pattern_perf.reliability_score

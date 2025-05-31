@@ -3,7 +3,8 @@ from data_structures.ohlc import OHLCData
 from tools.analyzers.smc_analyzer import SMCAnalyzer
 from tools.technical_analysis.technical_analysis_tool import TechnicalAnalysisTool
 from tools.technical_analysis.supporting_classes.technical_indicator import TechnicalIndicators
-from tools.technical_analysis.supporting_classes.wyckoff_analysis_tool import WyckoffAnalyzer
+#from tools.technical_analysis.supporting_classes.wyckoff_analysis_tool import WyckoffAnalyzer
+from analyzers.wyckoff_analyzer import WyckoffAnalyzer
 
 
 class SimpleTechnicalAnalyzer:
@@ -28,7 +29,7 @@ class SimpleTechnicalAnalyzer:
         results = {}
         
         # Quick Wyckoff check
-        spring = self.wyckoff_analyzer.detect_spring_pattern(ohlc_data)
+        spring = self.wyckoff_analyzer.detect_spring(ohlc_data)
         accumulation = self.wyckoff_analyzer.detect_accumulation_phase(ohlc_data)
         
         wyckoff_patterns = []

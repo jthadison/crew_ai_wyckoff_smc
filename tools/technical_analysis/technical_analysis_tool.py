@@ -1,15 +1,26 @@
 from datetime import datetime
+from pathlib import Path
+import sys
 from typing import Dict, List
 from crewai.tools import BaseTool
 
+# SOLUTION: Add project root to Python path
+current_dir = Path(__file__).parent  # tests folder
+project_root = current_dir.parent    # project root folder
+
+# Add project root to Python path
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+    
 from data_structures.ohlc import OHLCData
 from tools.analyzers.smc_analyzer import SMCAnalyzer
 from tools.technical_analysis.supporting_classes.technical_indicator import TechnicalIndicators
 #from tools.wyckoff_analysis_tool import WyckoffAnalyzer
+from analyzers.wyckoff_analyzer import WyckoffAnalyzer
 
 import numpy as np
 
-from tools.technical_analysis.supporting_classes.wyckoff_analysis_tool import WyckoffAnalyzer
+#from tools.technical_analysis.supporting_classes.wyckoff_analysis_tool import WyckoffAnalyzer
 
 class TechnicalAnalysisTool(BaseTool):
     """Main Technical Analysis Tool for CrewAI integration"""
@@ -18,10 +29,10 @@ class TechnicalAnalysisTool(BaseTool):
     description: str = "Comprehensive technical analysis with Wyckoff and SMC pattern recognition"
     
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        object.__setattr__(self, 'indicators', TechnicalIndicators())
-        object.__setattr__(self, 'wyckoff_analyzer', WyckoffAnalyzer())
-        object.__setattr__(self, 'smc_analyzer', SMCAnalyzer())
+        super().__init__(**kwargs)        
+        object.__setattr__(self, '_smc_analyzer', SMCAnalyzer())
+        object.__setattr__(self, '_indicators', TechnicalIndicators())
+        object.__setattr__(self, '_wyckoff_analyzer', WyckoffAnalyzer())
     
     @property
     def indicators(self) -> TechnicalIndicators:
